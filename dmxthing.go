@@ -33,6 +33,8 @@ func main() {
 
 	go l.Listen()
 
+	l.SetDisplays()
+
 	light1 := loupedeck.NewWatchedInt(0)
 	light1.AddWatcher(func(i int) { fmt.Printf("DMX 1->%d\n", i); udmx.Set(1, uint16(i)) })
 	light2 := loupedeck.NewWatchedInt(0)
@@ -48,10 +50,13 @@ func main() {
 
 	//	fmt.Printf("Defined lights\n")
 
-	_ = l.NewTouchDial(loupedeck.DisplayLeft, light1, light2, light3, 0, 100)
+	left := l.GetDisplay("left")
+	right := l.GetDisplay("right")
+
+	_ = l.NewTouchDial(left, light1, light2, light3, 0, 100)
 	//	fmt.Printf("Defined touchdial 1\n")
 
-	_ = l.NewTouchDial(loupedeck.DisplayRight, light4, light5, light6, 0, 100) // Might actually be 255
+	_ = l.NewTouchDial(right, light4, light5, light6, 0, 100) // Might actually be 255
 
 	//	fmt.Printf("Defined touchdials\n")
 
