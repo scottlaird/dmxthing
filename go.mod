@@ -1,6 +1,7 @@
 module github.com/scottlaird/dmxthing
 
-//replace github.com/scottlaird/udmx => /home/scott/git/udmx
+replace github.com/scottlaird/udmx => /home/scott/git/udmx
+replace github.com/scottlaird/loupedeck => /home/scott/git/loupedeck
 
 go 1.21
 
