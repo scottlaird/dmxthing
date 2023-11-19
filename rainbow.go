@@ -126,6 +126,21 @@ func (a *RainbowLight_P12) SetColorTemp(c int) {
 	a.dmx.Set(a.dmxid+2, v)
 }
 
+// SetFX sets the light's FX setting.
+func (a *RainbowLight_P12) SetFX(x int) {
+	a.dmx.Set(a.dmxid+9, uint16(x))
+}
+
+// SetFXRate sets the light's FX rate.
+func (a *RainbowLight_P12) SetFXRate(x int) {
+	a.dmx.Set(a.dmxid+10, uint16(x))
+}
+
+// SetFXSize sets the light's FX size.
+func (a *RainbowLight_P12) SetFXSize(x int) {
+	a.dmx.Set(a.dmxid+11, uint16(x))
+}
+
 func (a *RainbowLight_P12) MinColorTemp() int {
 	return 2000
 }
