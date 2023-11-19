@@ -40,7 +40,7 @@ func main() {
 	light3 := dmxthing.NewLightController(l, dmxthing.LeftBottom, []dmxthing.Light{dmxthing.NewAeosLight(udmx, 5)})
 
 	light4 := dmxthing.NewLightController(l, dmxthing.RightTop, []dmxthing.Light{dmxthing.NewRainbowLight_P5(udmx, 7)})
-	light5 := dmxthing.NewLightController(l, dmxthing.RightBottom, []dmxthing.Light{dmxthing.NewRainbowLight_P12(udmx, 13)})
+	light5 := dmxthing.NewLightController(l, dmxthing.RightMiddle, []dmxthing.Light{dmxthing.NewRainbowLight_P12(udmx, 13)})
 	light6 := dmxthing.NewLightController(l, dmxthing.RightBottom, []dmxthing.Light{dmxthing.NewRainbowLight_P5(udmx, 11)})
 
 	// Define the 'Circle' button (bottom left) to function as an "off" button.

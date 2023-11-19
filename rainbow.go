@@ -123,7 +123,7 @@ func (a *RainbowLight_P12) SetColorTemp(c int) {
 		// the controller to be power-cycled.
 		panic("Color temp out of range!")
 	}
-	a.dmx.Set(a.dmxid, v)
+	a.dmx.Set(a.dmxid+2, v)
 }
 
 func (a *RainbowLight_P12) MinColorTemp() int {

@@ -141,8 +141,10 @@ func (a *LightController) Draw() {
 
 // Reset sets the brightness to 0 and color to the minimum supported by the light.
 func (a *LightController) Reset() {
-	a.Brightness.Set(0)
+	// Many lights set the brightness to >0 when setting the color
+	// temp, so we're better off setting the temp first.
 	a.ColorTemp.Set(a.minColorTemp)
+	a.Brightness.Set(0)
 }
 
 func drawRightJustifiedStringAt(fd font.Drawer, s string, x, y int) {
