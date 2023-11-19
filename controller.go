@@ -1,6 +1,5 @@
 package dmxthing
 
-
 import (
 	"github.com/scottlaird/loupedeck"
 
@@ -125,6 +124,7 @@ func NewLightController(l *loupedeck.Loupedeck, position LoupedeckArea, lights [
 	return a
 }
 
+// Draw updates the Loupedeck display.
 func (a *LightController) Draw() {
 	im := image.NewRGBA(image.Rect(0, 0, 60, 90))
 	bg := color.RGBA{0, 0, 0, 255}
@@ -139,11 +139,12 @@ func (a *LightController) Draw() {
 	a.display.Draw(im, a.X, a.Y)
 }
 
-// Sets brightness to 0 and color to min
+// Reset sets the brightness to 0 and color to the minimum supported by the light.
 func (a *LightController) Reset() {
 	a.Brightness.Set(0)
 	a.ColorTemp.Set(a.minColorTemp)
 }
+
 func drawRightJustifiedStringAt(fd font.Drawer, s string, x, y int) {
 	bounds, _ := fd.BoundString(s)
 	width := bounds.Max.X - bounds.Min.X
@@ -153,4 +154,3 @@ func drawRightJustifiedStringAt(fd font.Drawer, s string, x, y int) {
 	fd.Dot = fixed.Point26_6{x26 - width, y26}
 	fd.DrawString(s)
 }
-

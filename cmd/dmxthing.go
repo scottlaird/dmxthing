@@ -4,12 +4,13 @@ import (
 	"fmt"
 
 	"github.com/google/gousb"
+	"github.com/scottlaird/dmxthing"
 	"github.com/scottlaird/loupedeck"
 	"github.com/scottlaird/udmx"
-	"github.com/scottlaird/dmxthing"
 
 	"image/color"
 )
+
 func main() {
 	ctx := gousb.NewContext()
 	defer ctx.Close()
@@ -39,19 +40,8 @@ func main() {
 	light3 := dmxthing.NewLightController(l, dmxthing.LeftBottom, []dmxthing.Light{dmxthing.NewAeosLight(udmx, 5)})
 
 	light4 := dmxthing.NewLightController(l, dmxthing.RightTop, []dmxthing.Light{dmxthing.NewRainbowLight_P5(udmx, 7)})
-	//light5 := NewLightController(l, RightBottom, []dmxthing.Light{dmxthing.NewRainbowLight_P12(udmx, 13)})
+	light5 := dmxthing.NewLightController(l, dmxthing.RightBottom, []dmxthing.Light{dmxthing.NewRainbowLight_P12(udmx, 13)})
 	light6 := dmxthing.NewLightController(l, dmxthing.RightBottom, []dmxthing.Light{dmxthing.NewRainbowLight_P5(udmx, 11)})
-	/*
-		light5.AddWatcher(func(i int) {
-			v := i * 16
-			l := v & 0xff
-			h := v >> 8
-			fmt.Printf("DMX 13+14->%d (%x %x)\n", i, h, l)
-			udmx.Set(13, uint16(h))
-			udmx.Set(14, uint16(l))
-		})
-	*/
-	//	fmt.Printf("Defined colors\n")
 
 	// Define the 'Circle' button (bottom left) to function as an "off" button.
 	l.BindButton(loupedeck.Circle, func(b loupedeck.Button, s loupedeck.ButtonStatus) {
@@ -60,7 +50,7 @@ func main() {
 		light2.Reset()
 		light3.Reset()
 		light4.Reset()
-		//light5.Reset()
+		light5.Reset()
 		light6.Reset()
 	})
 
@@ -70,13 +60,13 @@ func main() {
 		light2.Brightness.Set(3)
 		light3.Brightness.Set(5)
 		light4.Brightness.Set(47)
-		//light5.Brightness.Set(0)
+		light5.Brightness.Set(0)
 		light6.Brightness.Set(100)
 		light1.ColorTemp.Set(4700)
 		light2.ColorTemp.Set(4700)
 		light3.ColorTemp.Set(4700)
 		light4.ColorTemp.Set(4700)
-		//light5.ColorTemp.Set(4700)
+		light5.ColorTemp.Set(4700)
 		light6.ColorTemp.Set(4700)
 	})
 
