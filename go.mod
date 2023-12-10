@@ -10,7 +10,7 @@ require (
 	github.com/google/gousb v1.1.2
 	github.com/maruel/temperature v1.0.0
 	github.com/scottlaird/loupedeck v1.0.0
-	github.com/scottlaird/udmx v0.1.0
+	github.com/scottlaird/udmx v1.0.0
 	golang.org/x/image v0.14.0
 )
 

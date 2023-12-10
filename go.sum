@@ -13,8 +13,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/scottlaird/loupedeck v1.0.0 h1:sneK88iypovmAQzDjNZ3Z4MBkzF4PPO/nOzi+fS0dfQ=
 github.com/scottlaird/loupedeck v1.0.0/go.mod h1:aaaCro/ZEHovb+4ueuSLE6qQxqLIAnhnEnWY3xJ3Tq0=
-github.com/scottlaird/udmx v0.1.0 h1:9rLkKcXSEE8Y0NcLlQgm4TBokCZP3oufJM0liQFiqVA=
-github.com/scottlaird/udmx v0.1.0/go.mod h1:+qyvvzuERqtFQMrfcf0F7S9PwlTwoi9V9SzFC4hmHFA=
+github.com/scottlaird/udmx v1.0.0 h1:CO+1GzFr4/lG2Yq5HNeyqyL7z5AdLfbEpStxhMW58PQ=
+github.com/scottlaird/udmx v1.0.0/go.mod h1:+qyvvzuERqtFQMrfcf0F7S9PwlTwoi9V9SzFC4hmHFA=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 go.bug.st/serial v1.6.0 h1:mAbRGN4cKE2J5gMwsMHC2KQisdLRQssO9WSM+rbZJ8A=

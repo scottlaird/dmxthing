@@ -8,12 +8,12 @@ import (
 
 // AeosLight controls a Rotolight Aeos light
 type AeosLight struct {
-	dmx   *udmx.UDMXDevice
+	dmx   *udmx.Device
 	dmxid uint16
 }
 
 // NewAeosLight creates a new AeosLight object.
-func NewAeosLight(dmx *udmx.UDMXDevice, dmxid uint16) *AeosLight {
+func NewAeosLight(dmx *udmx.Device, dmxid uint16) *AeosLight {
 	a := &AeosLight{
 		dmx:   dmx,
 		dmxid: dmxid,

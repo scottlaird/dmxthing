@@ -12,13 +12,13 @@ import (
 // is an 8-bit brightness and the upper one is an 8-bit color
 // temperature.
 type RainbowLightP5 struct {
-	dmx   *udmx.UDMXDevice
+	dmx   *udmx.Device
 	dmxid uint16
 }
 
 // NewRainbowLightP5 creates a new RainbowLightP5 using a
 // specific DMX controller and at a specific DMX address.
-func NewRainbowLightP5(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLightP5 {
+func NewRainbowLightP5(dmx *udmx.Device, dmxid uint16) *RainbowLightP5 {
 	a := &RainbowLightP5{
 		dmx:   dmx,
 		dmxid: dmxid,
@@ -79,13 +79,13 @@ func (a *RainbowLightP5) MaxColorTemp() int {
 // Right now, only intensity and color temp are used, but various
 // special effect settings will be exposed in the future.
 type RainbowLightP12 struct {
-	dmx   *udmx.UDMXDevice
+	dmx   *udmx.Device
 	dmxid uint16
 }
 
 // NewRainbowLightP12 creates a new RainbowLightP12 using a
 // specific DMX controller and at a specific DMX address.
-func NewRainbowLightP12(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLightP12 {
+func NewRainbowLightP12(dmx *udmx.Device, dmxid uint16) *RainbowLightP12 {
 	a := &RainbowLightP12{
 		dmx:   dmx,
 		dmxid: dmxid,
