@@ -6,12 +6,13 @@ import (
 	"github.com/scottlaird/udmx"
 )
 
-
+// AeosLight controls a Rotolight Aeos light
 type AeosLight struct {
 	dmx   *udmx.UDMXDevice
 	dmxid uint16
 }
 
+// NewAeosLight creates a new AeosLight object.
 func NewAeosLight(dmx *udmx.UDMXDevice, dmxid uint16) *AeosLight {
 	a := &AeosLight{
 		dmx:   dmx,
@@ -21,11 +22,13 @@ func NewAeosLight(dmx *udmx.UDMXDevice, dmxid uint16) *AeosLight {
 	return a
 }
 
+// SetBrightness sets the brightness of the light on a range from 0 to 100%.
 func (a *AeosLight) SetBrightness(b int) {
 	brightness := uint16(float64(b) * 2.55) // Input range is 0-100, output should be 0-255.
 	a.dmx.Set(a.dmxid, brightness)
 }
 
+// SetColorTemp sets the color temperature of the light, in degrees K
 func (a *AeosLight) SetColorTemp(c int) {
 	// Color points that I've been using (unverified, but seem reasonably close)
 	//
@@ -50,10 +53,12 @@ func (a *AeosLight) SetColorTemp(c int) {
 	a.dmx.Set(a.dmxid+1, v)
 }
 
+// MinColorTemp returns the minimum color temperature of this light
 func (a *AeosLight) MinColorTemp() int {
 	return 3150
 }
 
+// MaxColorTemp returns the maximum color temperature of this light
 func (a *AeosLight) MaxColorTemp() int {
 	return 6300
 }

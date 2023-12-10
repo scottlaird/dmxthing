@@ -105,6 +105,9 @@ func colorTempToRGB(temp int) color.Color {
 	return color.RGBA{r, g, b, 0xff}
 }
 
+// ColorTempButton creates a Loupedeck button for managing color
+// temperatures for a specified light, ranging between 'min' and 'max'
+// degrees K.
 func ColorTempButton(l *loupedeck.Loupedeck, w *loupedeck.WatchedInt, min, max int, button loupedeck.TouchButton) *loupedeck.MultiButton {
 	colorTemps := buildColorTemps(min, max)
 	fmt.Printf("***** COLOR TEMPS ARE: %v\n", colorTemps)

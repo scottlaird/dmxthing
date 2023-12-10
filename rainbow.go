@@ -6,20 +6,20 @@ import (
 	"github.com/scottlaird/udmx"
 )
 
-// RainbowLight_P5 controls a Quasar Science Rainbow light bar (the
+// RainbowLightP5 controls a Quasar Science Rainbow light bar (the
 // original model, not Rainbow 2 or Double Rainbow), in DMX profile 5.
 // In this mode, the light listens on two DMX addresses; the lower one
 // is an 8-bit brightness and the upper one is an 8-bit color
 // temperature.
-type RainbowLight_P5 struct {
+type RainbowLightP5 struct {
 	dmx   *udmx.UDMXDevice
 	dmxid uint16
 }
 
-// NewRainbowLight_P5 creates a new RainbowLight_P5 using a
+// NewRainbowLightP5 creates a new RainbowLightP5 using a
 // specific DMX controller and at a specific DMX address.
-func NewRainbowLight_P5(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLight_P5 {
-	a := &RainbowLight_P5{
+func NewRainbowLightP5(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLightP5 {
+	a := &RainbowLightP5{
 		dmx:   dmx,
 		dmxid: dmxid,
 	}
@@ -28,14 +28,14 @@ func NewRainbowLight_P5(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLight_P5 {
 }
 
 // SetBrightness sets the brightness of the DMX light.
-func (a *RainbowLight_P5) SetBrightness(b int) {
+func (a *RainbowLightP5) SetBrightness(b int) {
 	brightness := uint16(float64(b) * 2.55) // Input range is 0-100, output should be 0-255.
 	a.dmx.Set(a.dmxid, brightness)
 }
 
 // SetColorTemp sets the color temperature of the DMX light.
 // The temperature should be specified in degrees K.
-func (a *RainbowLight_P5) SetColorTemp(c int) {
+func (a *RainbowLightP5) SetColorTemp(c int) {
 	// Map c=2000..6000 linearly onto 1..255.
 	v := uint16(((float32(c)-2000)*254/4000 + 1))
 	fmt.Printf("Setting color temp to %d for %dK\n", v, c)
@@ -49,15 +49,15 @@ func (a *RainbowLight_P5) SetColorTemp(c int) {
 	a.dmx.Set(a.dmxid+1, v)
 }
 
-func (a *RainbowLight_P5) MinColorTemp() int {
+func (a *RainbowLightP5) MinColorTemp() int {
 	return 2000
 }
 
-func (a *RainbowLight_P5) MaxColorTemp() int {
+func (a *RainbowLightP5) MaxColorTemp() int {
 	return 6000
 }
 
-// RainbowLight_P12 controls a Quasar Science Rainbow light bar (the
+// RainbowLightP12 controls a Quasar Science Rainbow light bar (the
 // original model, not Rainbow 2 or Double Rainbow), in DMX profile
 // 12.  In this mode, the light listens to a block of 12 DMX
 // addresses:
@@ -78,15 +78,15 @@ func (a *RainbowLight_P5) MaxColorTemp() int {
 //
 // Right now, only intensity and color temp are used, but various
 // special effect settings will be exposed in the future.
-type RainbowLight_P12 struct {
+type RainbowLightP12 struct {
 	dmx   *udmx.UDMXDevice
 	dmxid uint16
 }
 
-// NewRainbowLight_P12 creates a new RainbowLight_P12 using a
+// NewRainbowLightP12 creates a new RainbowLightP12 using a
 // specific DMX controller and at a specific DMX address.
-func NewRainbowLight_P12(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLight_P12 {
-	a := &RainbowLight_P12{
+func NewRainbowLightP12(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLightP12 {
+	a := &RainbowLightP12{
 		dmx:   dmx,
 		dmxid: dmxid,
 	}
@@ -95,7 +95,7 @@ func NewRainbowLight_P12(dmx *udmx.UDMXDevice, dmxid uint16) *RainbowLight_P12 {
 }
 
 // SetBrightness sets the brightness of the DMX light.
-func (a *RainbowLight_P12) SetBrightness(b int) {
+func (a *RainbowLightP12) SetBrightness(b int) {
 	// In this mode, the light uses 16-bit brightness.  For my
 	// use, I care more about the dimmest possible setting than I
 	// do about fine control at the high/middle end, so I'm going
@@ -112,7 +112,7 @@ func (a *RainbowLight_P12) SetBrightness(b int) {
 
 // SetColorTemp sets the color temperature of the DMX light.
 // The temperature should be specified in degrees K.
-func (a *RainbowLight_P12) SetColorTemp(c int) {
+func (a *RainbowLightP12) SetColorTemp(c int) {
 	// Map c=2000..6000 linearly onto 1..255.
 	v := uint16(((float32(c)-2000)*254/4000 + 1))
 	fmt.Printf("Setting color temp to %d for %dK\n", v, c)
@@ -127,24 +127,24 @@ func (a *RainbowLight_P12) SetColorTemp(c int) {
 }
 
 // SetFX sets the light's FX setting.
-func (a *RainbowLight_P12) SetFX(x int) {
+func (a *RainbowLightP12) SetFX(x int) {
 	a.dmx.Set(a.dmxid+9, uint16(x))
 }
 
 // SetFXRate sets the light's FX rate.
-func (a *RainbowLight_P12) SetFXRate(x int) {
+func (a *RainbowLightP12) SetFXRate(x int) {
 	a.dmx.Set(a.dmxid+10, uint16(x))
 }
 
 // SetFXSize sets the light's FX size.
-func (a *RainbowLight_P12) SetFXSize(x int) {
+func (a *RainbowLightP12) SetFXSize(x int) {
 	a.dmx.Set(a.dmxid+11, uint16(x))
 }
 
-func (a *RainbowLight_P12) MinColorTemp() int {
+func (a *RainbowLightP12) MinColorTemp() int {
 	return 2000
 }
 
-func (a *RainbowLight_P12) MaxColorTemp() int {
+func (a *RainbowLightP12) MaxColorTemp() int {
 	return 6000
 }

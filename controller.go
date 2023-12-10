@@ -12,6 +12,7 @@ import (
 	"strconv"
 )
 
+// LoupedeckArea represents an area of the Loupedeck touch display.
 type LoupedeckArea int
 
 const (
@@ -23,6 +24,8 @@ const (
 	RightBottom
 )
 
+// Light is an interface for lights that are compatible with this
+// controller.
 type Light interface {
 	SetBrightness(int)
 	SetColorTemp(int)
@@ -30,10 +33,13 @@ type Light interface {
 	MaxColorTemp() int
 }
 
+// LightController is a controller for one or more lights.  It
+// implements brightness and color control using buttons and dials on
+// the Loupedeck.
 type LightController struct {
 	Loupedeck    *loupedeck.Loupedeck
 	Position     LoupedeckArea
-	DialButtonId int
+	DialButtonID int
 	X, Y         int
 	Brightness   *loupedeck.WatchedInt
 	ColorTemp    *loupedeck.WatchedInt
@@ -43,6 +49,7 @@ type LightController struct {
 	minColorTemp int
 }
 
+// NewLightController creates a new LightController for a set of lights.
 func NewLightController(l *loupedeck.Loupedeck, position LoupedeckArea, lights []Light) *LightController {
 	a := &LightController{
 		Loupedeck:  l,
