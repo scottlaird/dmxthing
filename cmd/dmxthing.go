@@ -39,9 +39,9 @@ func main() {
 	light2 := dmxthing.NewLightController(l, dmxthing.LeftMiddle, []dmxthing.Light{dmxthing.NewAeosLight(udmx, 3)})
 	light3 := dmxthing.NewLightController(l, dmxthing.LeftBottom, []dmxthing.Light{dmxthing.NewAeosLight(udmx, 5)})
 
-	light4 := dmxthing.NewLightController(l, dmxthing.RightTop, []dmxthing.Light{dmxthing.NewRainbowLight_P5(udmx, 7)})
-	light5 := dmxthing.NewLightController(l, dmxthing.RightMiddle, []dmxthing.Light{dmxthing.NewRainbowLight_P12(udmx, 13)})
-	light6 := dmxthing.NewLightController(l, dmxthing.RightBottom, []dmxthing.Light{dmxthing.NewRainbowLight_P5(udmx, 11)})
+	light4 := dmxthing.NewLightController(l, dmxthing.RightTop, []dmxthing.Light{dmxthing.NewRainbowLightP5(udmx, 7)})
+	light5 := dmxthing.NewLightController(l, dmxthing.RightMiddle, []dmxthing.Light{dmxthing.NewRainbowLightP12(udmx, 13)})
+	light6 := dmxthing.NewLightController(l, dmxthing.RightBottom, []dmxthing.Light{dmxthing.NewRainbowLightP5(udmx, 11)})
 
 	// Define the 'Circle' button (bottom left) to function as an "off" button.
 	l.BindButton(loupedeck.Circle, func(b loupedeck.Button, s loupedeck.ButtonStatus) {

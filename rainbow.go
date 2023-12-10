@@ -46,7 +46,7 @@ func (a *RainbowLightP5) SetColorTemp(c int) {
 		// the controller to be power-cycled.
 		panic("Color temp out of range!")
 	}
-	a.dmx.Set(a.dmxid+1, v)
+	_ = a.dmx.Set(a.dmxid+1, v)
 }
 
 func (a *RainbowLightP5) MinColorTemp() int {
@@ -106,8 +106,8 @@ func (a *RainbowLightP12) SetBrightness(b int) {
 	l := uint16(v & 0xff)
 	h := uint16(v >> 8)
 
-	a.dmx.Set(a.dmxid, h)
-	a.dmx.Set(a.dmxid+1, l)
+	_ = a.dmx.Set(a.dmxid, h)
+	_ = a.dmx.Set(a.dmxid+1, l)
 }
 
 // SetColorTemp sets the color temperature of the DMX light.
@@ -123,22 +123,22 @@ func (a *RainbowLightP12) SetColorTemp(c int) {
 		// the controller to be power-cycled.
 		panic("Color temp out of range!")
 	}
-	a.dmx.Set(a.dmxid+2, v)
+	_ = a.dmx.Set(a.dmxid+2, v)
 }
 
 // SetFX sets the light's FX setting.
 func (a *RainbowLightP12) SetFX(x int) {
-	a.dmx.Set(a.dmxid+9, uint16(x))
+	_ = a.dmx.Set(a.dmxid+9, uint16(x))
 }
 
 // SetFXRate sets the light's FX rate.
 func (a *RainbowLightP12) SetFXRate(x int) {
-	a.dmx.Set(a.dmxid+10, uint16(x))
+	_ = a.dmx.Set(a.dmxid+10, uint16(x))
 }
 
 // SetFXSize sets the light's FX size.
 func (a *RainbowLightP12) SetFXSize(x int) {
-	a.dmx.Set(a.dmxid+11, uint16(x))
+	_ = a.dmx.Set(a.dmxid+11, uint16(x))
 }
 
 func (a *RainbowLightP12) MinColorTemp() int {

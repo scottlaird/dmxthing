@@ -25,7 +25,7 @@ func NewAeosLight(dmx *udmx.UDMXDevice, dmxid uint16) *AeosLight {
 // SetBrightness sets the brightness of the light on a range from 0 to 100%.
 func (a *AeosLight) SetBrightness(b int) {
 	brightness := uint16(float64(b) * 2.55) // Input range is 0-100, output should be 0-255.
-	a.dmx.Set(a.dmxid, brightness)
+	_ = a.dmx.Set(a.dmxid, brightness)
 }
 
 // SetColorTemp sets the color temperature of the light, in degrees K
@@ -50,7 +50,7 @@ func (a *AeosLight) SetColorTemp(c int) {
 		// the controller to be power-cycled.
 		panic("Color temp out of range!")
 	}
-	a.dmx.Set(a.dmxid+1, v)
+	_ = a.dmx.Set(a.dmxid+1, v)
 }
 
 // MinColorTemp returns the minimum color temperature of this light

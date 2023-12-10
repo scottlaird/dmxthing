@@ -135,7 +135,7 @@ func NewLightController(l *loupedeck.Loupedeck, position LoupedeckArea, lights [
 func (a *LightController) Draw() {
 	im := image.NewRGBA(image.Rect(0, 0, 60, 90))
 	bg := color.RGBA{0, 0, 0, 255}
-	draw.Draw(im, im.Bounds(), &image.Uniform{bg}, image.ZP, draw.Src)
+	draw.Draw(im, im.Bounds(), &image.Uniform{bg}, image.Point{}, draw.Src)
 
 	fd := a.Loupedeck.FontDrawer()
 	fd.Dst = im
@@ -160,6 +160,6 @@ func drawRightJustifiedStringAt(fd font.Drawer, s string, x, y int) {
 	x26 := fixed.I(x)
 	y26 := fixed.I(y)
 
-	fd.Dot = fixed.Point26_6{x26 - width, y26}
+	fd.Dot = fixed.Point26_6{X: x26 - width, Y: y26}
 	fd.DrawString(s)
 }
