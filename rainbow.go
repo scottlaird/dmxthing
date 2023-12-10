@@ -30,7 +30,7 @@ func NewRainbowLightP5(dmx *udmx.Device, dmxid uint16) *RainbowLightP5 {
 // SetBrightness sets the brightness of the DMX light.
 func (a *RainbowLightP5) SetBrightness(b int) {
 	brightness := uint16(float64(b) * 2.55) // Input range is 0-100, output should be 0-255.
-	_  = a.dmx.Set(a.dmxid, brightness)
+	_ = a.dmx.Set(a.dmxid, brightness)
 }
 
 // SetColorTemp sets the color temperature of the DMX light.

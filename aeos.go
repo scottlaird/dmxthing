@@ -62,4 +62,3 @@ func (a *AeosLight) MinColorTemp() int {
 func (a *AeosLight) MaxColorTemp() int {
 	return 6300
 }
-
