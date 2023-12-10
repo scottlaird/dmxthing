@@ -45,7 +45,7 @@ func main() {
 
 	// Define the 'Circle' button (bottom left) to function as an "off" button.
 	l.BindButton(loupedeck.Circle, func(b loupedeck.Button, s loupedeck.ButtonStatus) {
-		l.SetButtonColor(loupedeck.Circle, color.RGBA{255, 0, 0, 255})
+		_ = l.SetButtonColor(loupedeck.Circle, color.RGBA{255, 0, 0, 255})
 		light1.Reset()
 		light2.Reset()
 		light3.Reset()
@@ -55,7 +55,7 @@ func main() {
 	})
 
 	l.BindButton(loupedeck.Button1, func(b loupedeck.Button, s loupedeck.ButtonStatus) {
-		l.SetButtonColor(loupedeck.Button1, color.RGBA{0, 255, 0, 255})
+		_ = l.SetButtonColor(loupedeck.Button1, color.RGBA{0, 255, 0, 255})
 		light1.Brightness.Set(15)
 		light2.Brightness.Set(3)
 		light3.Brightness.Set(5)
